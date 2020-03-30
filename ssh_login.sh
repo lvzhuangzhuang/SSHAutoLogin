@@ -1,10 +1,6 @@
 #!/bin/bash
 
 # Function : 使用except无需输入密码自动登录ssh
-# Author   : Jiangxianli
-# Date     : 2016/01/14
-# Github   : https://github.com/jiangxianli/SSHAutoLogin
-# Update   : Xiongwilee 2018/06/18 https://github.com/xiongwilee/SSHAutoLogin
 
 #默认服务器配置项
 #   "别名            服务器名称                   端口号   IP地址             登录用户名     登录密码/秘钥文件Key 秘钥文件地址"
@@ -14,9 +10,7 @@ CONFIGS=()
 BaseDir="/etc/ssh_login"
 #配置文件目录
 CONFIG_PATH="$BaseDir/host.ini"
-#配置文件下载地址
-#iniUrl="https://raw.githubusercontent.com/jiangxianli/SSHAutoLogin/master/host.ini"
-iniUrl="https://www.jiangxianli.com/SSHAutoLogin/host.ini"
+
 
 # 读取配置文件
 if [ -f ${CONFIG_PATH} ]; then
@@ -212,7 +206,7 @@ EditConfig()
 {
     CheckDir
     if [ ! -f "$CONFIG_PATH" ]; then
-      curl -s -ko  $CONFIG_PATH --connect-timeout 300 --retry 5 --retry-delay 3 $iniUrl
+      echo "请下载配置文件！"
     fi
     vi $CONFIG_PATH
 }
