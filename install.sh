@@ -2,7 +2,7 @@
 
 #基础目录
 BaseDir="/etc/ssh_login"
-
+dir=`pwd`
 ##
 # 检查基础目录是否存在
 ##
@@ -37,11 +37,12 @@ fi
 if [ ! -f "$BaseDir/ssh_login" ]; then
         touch  $BaseDir/ssh_login
 fi
-echo host.ini >>$BaseDir/host.ini 
+
+cat $dir/host.bak.ini >$BaseDir/host.ini 
 echo -e "写入配置文件host.ini到$BaseDir/host.ini ......\n"
 
 #写入可执行文件
-echo ssh_login.sh >>$BaseDir/ssh_login 
+cat $dir/ssh_login.sh >$BaseDir/ssh_login 
 chmod u+x $BaseDir/ssh_login
 echo -e "写入可执行文件ssh_login到$BaseDir/ssh_login ......\n"
 
